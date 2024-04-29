@@ -1,3 +1,4 @@
+String path;
 int LAB_SIZE = 21;
 char labyrinthe [][];
 char sides [][][];
@@ -8,8 +9,9 @@ PImage img;
 float anim;
 float rotate;
 void setup() {
-  img = loadImage("stones.jpg");
-  frameRate(20);
+  path = dataPath("stones.jpg");
+  img = loadImage(path);
+  frameRate(35);
   randomSeed(2);
   size(1000, 1000, P3D);
   labyrinthe = new char[LAB_SIZE][LAB_SIZE];
@@ -306,7 +308,7 @@ void draw(){
    lightFalloff(0.03,0.01,0.001);
    //pointLight(255,255,255,boxSize*0.5+posX*boxSize,boxSize*0.5+posY*boxSize,boxSize*1.2);
    pointLight(255,255,255,boxSize*0.5+(posX)*boxSize-anim/20*dirX*boxSize,boxSize*0.5+posY*boxSize-anim/20*dirY*boxSize,1.2*boxSize);
-   perspective(PI/1.3,width*1.2/height, 0.5, 10*cameraZ);
+   perspective(PI/2.,width*1.2/height, 0.5, 10*cameraZ);
    draw_laby_my_way(boxSize);
    translate(0,0,boxSize);
    draw_laby_my_way2(boxSize);
